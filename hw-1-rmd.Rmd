@@ -49,7 +49,7 @@ Predictive. We are predicting a future event.
 
 ## Excercise 1
 
-```{r}
+```{r, echo = FALSE}
 library("tidyverse")
 library("ggplot2")
 
@@ -58,17 +58,21 @@ hist(mpg$hwy)
 
 I can see that highway mileage seems to be bimodal with peaks between 15-20 and 25-30 with a long tail up to 45 mpg.
 
+\newpage
+
 ## Excercise 2
 
-```{r}
+```{r, echo = FALSE}
 plot(mpg$cty~mpg$hwy)
 ```
 
 There is a positive trend between highway mpg and city mpg which makes sense. If a motor is efficient on city streets it will also tend to be efficient on the freeway.
 
+\newpage
+
 ## Excercise 3
 
-```{r}
+```{r, echo = FALSE}
 counts <- sort(table(mpg$manufacturer))
 par(las = 2)
 barplot(counts, horiz = TRUE, cex.names = 0.5)
@@ -76,9 +80,39 @@ barplot(counts, horiz = TRUE, cex.names = 0.5)
 
 Dodge produced the most cars while lincoln produced the least.
 
+\newpage
+
 ## Excercise 4
 
-```{r}
-mpg %>% 
-  group_by()
+```{r, echo = FALSE}
+boxplot(hwy~cyl, data = mpg)
 ```
+
+I see that the more cylinders a car has it will generally have less highway miles per gallon.
+
+\newpage
+
+## Excercise 5
+
+```{r, echo = FALSE}
+##install.packages("corrplot")
+library(corrplot)
+
+mpg %>% 
+  mutate(new_manufacturer = as.numeric(as.factor(manufacturer))) %>% 
+  mutate(new_model = as.numeric(as.factor(model))) %>%
+  mutate(new_disp = as.numeric(as.factor(displ))) %>%
+  mutate(new_year = as.numeric(as.factor(year))) %>%
+  mutate(new_cyl = as.numeric(as.factor(cyl))) %>%
+  mutate(new_trans = as.numeric(as.factor(trans))) %>%
+  mutate(new_drv = as.numeric(as.factor(drv))) %>%
+  mutate(new_cty = as.numeric(as.factor(cty))) %>%
+  mutate(new_hwy = as.numeric(as.factor(hwy))) %>%
+  mutate(new_fl = as.numeric(as.factor(fl))) %>%
+  mutate(new_class = as.numeric(as.factor(class))) %>%
+  select(starts_with("new_")) %>% 
+  cor() %>% 
+  corrplot(type = "lower")
+```
+
+City and highway mileage are strongly uncorrelated with engine displacement and number of cylinders. Highway mileage and City mileage are strongly correlated. Number of cylinders and displacement are correlated. Class of car and highway mileage are negatively correlated which may be because of my method of cleaning the data. However, it does make sense that there would be a pattern between class of car and mileage. Same with manufacturer and (mileage(both cty and hwy), disp, and cyl.)
