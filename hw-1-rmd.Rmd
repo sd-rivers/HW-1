@@ -1,0 +1,38 @@
+---
+title: "hw-1-code"
+author: "Shiloh Rivers"
+date: "4/2/2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 1
+
+The difference between supervised and unsupervised data is that all data sets
+are labeled in supervised data while this is not the case with unsupervised data.
+Supervised data uses classification and regression while unsupervised uses clustering,
+association, and dimensionality reduction.
+
+## Question 2
+
+Classification has an output that is categorical while regression has an output
+that is quantitative.
+
+## Question 3
+
+2 metrics commonly used for classification models are accuracy and precision.
+2 metrics commonly used for regression models are mean squared error and mean absolute error.
+
+## Question 4
+
+Descriptive models: Create a visual emphasis of patterns in data.
+Inferential models: Test a theory and determine cause and effect between outcome and predictors.
+Predictive models: Predict new data using the patterns found in the old data.
+
+## Question 5
+
+Mechanistic models use a provided theory and fit the data using the model we already have in mind.
+Empirical models take the data and allow the computer to create/find a model based on the data.
