@@ -34,5 +34,51 @@ Predictive models: Predict new data using the patterns found in the old data.
 
 ## Question 5
 
-Mechanistic models use a provided theory and fit the data using the model we already have in mind.
-Empirical models take the data and allow the computer to create/find a model based on the data.
+Mechanistic models use a provided theory and fit the data using the model we already have in mind. We assume a function f. Requires less data.
+Empirical models take the data and allow the computer to create/find a model based on the data. We don't assume a function f. Requires more data.
+A mechanistic model is easier to understand because we have created a theory and we can explain the theory we created to another person. Empirical models were not created by a "black box".
+Empirical models will tend to overfit data thereby having a low bias but high variance: not necessarily being able to predict future data well. Mechanical models are more controllable in this manner. We can use less parameters to increase bias and lower variance.
+
+## Question 6
+
+Given a voter’s profile/data, how likely is it that they will vote in favor of the candidate?
+Inferential. We are determining if our theory about a connection between predictors and outcomes is plausible.
+
+How would a voter’s likelihood of support for the candidate change if they had personal contact with the candidate?
+Predictive. We are predicting a future event.
+
+## Excercise 1
+
+```{r}
+library("tidyverse")
+library("ggplot2")
+
+hist(mpg$hwy)
+```
+
+I can see that highway mileage seems to be bimodal with peaks between 15-20 and 25-30 with a long tail up to 45 mpg.
+
+## Excercise 2
+
+```{r}
+plot(mpg$cty~mpg$hwy)
+```
+
+There is a positive trend between highway mpg and city mpg which makes sense. If a motor is efficient on city streets it will also tend to be efficient on the freeway.
+
+## Excercise 3
+
+```{r}
+counts <- sort(table(mpg$manufacturer))
+par(las = 2)
+barplot(counts, horiz = TRUE, cex.names = 0.5)
+```
+
+Dodge produced the most cars while lincoln produced the least.
+
+## Excercise 4
+
+```{r}
+mpg %>% 
+  group_by()
+```
